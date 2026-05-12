@@ -1,89 +1,115 @@
-name: Build A32 Surgical Kernel v3
+name: ubuntu
+
 on:
   workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Kernel
-        uses: actions/checkout@v4
-        with:
-          repository: Yenping0001/android_kernel_samsung_a326b
-          ref: a32x-kernel
-          fetch-depth: 1
+# Ensure the token has write access to the repository
+permissions:
+  contents: write
 
-      - name: Install Build Tools
+jobs:
+  tmate-session:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 3600
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update system and install tmate
         run: |
           sudo apt update
-          sudo apt install -y bc bison build-essential flex git libssl-dev libncurses5-dev python3 zip patch
+          sudo apt install -y tmate
 
-      - name: Setup KernelSU-Next (Legacy)
+      - name: Set hostname to ubuntu
         run: |
-          # We add '|| true' because the setup.sh script often exits with 1 even when successful
-          curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy || true
-          
-          # Find the core file regardless of symlinks
-          KSU_C_FILE=$(find . -name "ksu.c" | grep "KernelSU")
-          echo "KSU_CORE=$KSU_C_FILE" >> $GITHUB_ENV
-          
-          # Disable KPROBES for non-GKI compatibility
-          find KernelSU-Next -type f -exec sed -i 's/#ifdef CONFIG_KPROBES/#if defined(CONFIG_KPROBES) \&\& 0/g' {} +
+          sudo hostnamectl set-hostname ubuntu
 
-      - name: Prepare SUSFS & FS Patches
+      - name: Create user 'ubuntu' with password 'ubuntu' and sudo privileges
         run: |
-          git clone -b kernel-4.14 https://gitlab.com/simonpunk/susfs4ksu.git susfs_src
-          cp susfs_src/kernel_patches/fs/susfs.c fs/
-          cp susfs_src/kernel_patches/include/linux/susfs.h include/linux/
-          
-          # Inject headers directly into the top of the files to prevent compilation errors
-          for file in fs/dcache.c fs/namei.c fs/namespace.c fs/proc/task_mmu.c; do
-            sed -i '1i #include <linux/susfs.h>' $file
+          sudo useradd -m -s /bin/bash ubuntu
+          echo 'ubuntu:ubuntu' | sudo chpasswd
+          sudo usermod -aG sudo ubuntu
+          echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/ubuntu
+
+      - name: Allow ubuntu to write to the repository
+        run: |
+          RUNNER_GROUP=$(id -gn runner)
+          sudo usermod -aG "$RUNNER_GROUP" ubuntu
+          sudo chown -R runner:"$RUNNER_GROUP" "$GITHUB_WORKSPACE"
+          sudo chmod -R g+rw "$GITHUB_WORKSPACE"
+          sudo find "$GITHUB_WORKSPACE" -type d -exec chmod g+s {} \;
+
+      - name: Create quitnsave script
+        run: |
+          sudo tee /usr/local/bin/quitnsave > /dev/null <<'EOF'
+          #!/bin/bash
+          # Re-run with sudo if not root
+          if [ "$EUID" -ne 0 ]; then
+              exec sudo "$0" "$@"
+          fi
+
+          # Locate repository
+          REPO_DIR=$(find /home/runner/work -name .git -type d -exec dirname {} \; 2>/dev/null | head -1)
+          if [ -z "$REPO_DIR" ]; then
+              echo "No git repository found."
+              exit 1
+          fi
+          cd "$REPO_DIR"
+
+          # Configure git user (required for commit)
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          # Add and commit
+          git add .
+          if git diff --cached --quiet; then
+              echo "Nothing to commit."
+              exit 0
+          fi
+          git commit -m "Auto-save from tmate session"
+
+          # Get the authenticated remote URL from local config
+          REMOTE_URL=$(git config --get remote.origin.url)
+          if [ -z "$REMOTE_URL" ]; then
+              echo "No remote origin found."
+              exit 1
+          fi
+
+          # Push using the exact URL (contains token)
+          CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          echo "Pushing to $REMOTE_URL (branch $CURRENT_BRANCH)"
+          if git push "$REMOTE_URL" HEAD:"$CURRENT_BRANCH"; then
+              # Signal runner to quit only after successful push
+              touch /tmp/quit
+              echo "Changes saved. Workflow will exit shortly."
+          else
+              echo "Push failed. Check the error above."
+              exit 1
+          fi
+          EOF
+          sudo chmod +x /usr/local/bin/quitnsave
+
+      - name: Launch tmate as user ubuntu
+        run: |
+          SOCKET="/tmp/tmate-$(date +%s).sock"
+          sudo -u ubuntu bash <<EOF &
+          cd "$GITHUB_WORKSPACE"
+          tmate -S "$SOCKET" new-session -d
+          tmate -S "$SOCKET" wait tmate-ready
+          SSH_URL=\$(tmate -S "$SOCKET" display -p '#{tmate_ssh}')
+          echo "\$SSH_URL" > /tmp/tmate_url
+          EOF
+
+          while [ ! -f /tmp/tmate_url ]; do sleep 1; done
+          TMATE_URL=$(cat /tmp/tmate_url)
+          echo "$TMATE_URL"
+
+      - name: Keep runner alive until quit signal
+        run: |
+          echo "Tmate session active. Connect using the link above."
+          echo "Type 'quitnsave' to commit all changes and end the job."
+          while [ ! -f /tmp/quit ]; do
+            sleep 5
           done
-
-      - name: Apply SUSFS Kernel Patches
-        run: |
-          # Use --fuzz=3 to allow for Samsung's source code variations
-          patch -p1 --fuzz=3 < susfs_src/kernel_patches/50_add_susfs_in_kernel-4.14.patch || echo "Patching finished with some shifts"
-          
-          # Bridge KSU-Next to SUSFS using the path found earlier
-          sed -i '1i #include <linux/susfs.h>' ${{ env.KSU_CORE }}
-          sed -i '/ksu_handle_commit/a \    susfs_set_fa_ksu_status(true);' ${{ env.KSU_CORE }}
-
-      - name: Configure rufnx_defconfig
-        run: |
-          CONF="arch/arm64/configs/rufnx_defconfig"
-          
-          # Force Security settings to 'n'
-          sed -i 's/CONFIG_SECURITY_DEFEX=y/CONFIG_SECURITY_DEFEX=n/g' $CONF
-          sed -i 's/CONFIG_SECURITY_SAMSUNG_RKP=y/CONFIG_SECURITY_SAMSUNG_RKP=n/g' $CONF
-          sed -i 's/CONFIG_KNOX_KAP=y/CONFIG_KNOX_KAP=n/g' $CONF
-          
-          # Append new features
-          {
-            echo "CONFIG_VIRTUALIZATION=y"
-            echo "CONFIG_KVM=y"
-            echo "CONFIG_KVM_ARM_HOST=y"
-            echo "CONFIG_KSU=y"
-            echo "CONFIG_KSU_NEXT=y"
-            echo "CONFIG_KSU_SUSFS=y"
-            echo "CONFIG_NET_SCH_FQ=y"
-            echo "CONFIG_TCP_CONG_BBR=y"
-            echo "CONFIG_DEFAULT_TCP_CONG=\"bbr\""
-          } >> $CONF
-          
-          # Ensure the FS Makefile sees susfs.o
-          grep -q "susfs.o" fs/Makefile || echo "obj-y += susfs.o" >> fs/Makefile
-
-      - name: Build
-        run: |
-          chmod +x build_kernel.sh
-          ./build_kernel.sh
-        env:
-          KBUILD_BUILD_USER: "Frost"
-
-      - name: Upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: A32-Nuclear-Kernel-v3
-          path: output/*.zip
+          echo "Quit signal received. Ending job."
