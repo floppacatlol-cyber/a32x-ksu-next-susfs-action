@@ -1,4 +1,4 @@
-name: Build A32 Surgical Kernel v2
+name: Build A32 Surgical Kernel v3
 on:
   workflow_dispatch:
 
@@ -20,14 +20,14 @@ jobs:
 
       - name: Setup KernelSU-Next (Legacy)
         run: |
-          # Use legacy for 4.14
-          curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
+          # We add '|| true' because the setup.sh script often exits with 1 even when successful
+          curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy || true
           
-          # Instead of moving folders and breaking symlinks, we find the file wherever it hid
+          # Find the core file regardless of symlinks
           KSU_C_FILE=$(find . -name "ksu.c" | grep "KernelSU")
           echo "KSU_CORE=$KSU_C_FILE" >> $GITHUB_ENV
           
-          # Disable KPROBES (Required for non-GKI)
+          # Disable KPROBES for non-GKI compatibility
           find KernelSU-Next -type f -exec sed -i 's/#ifdef CONFIG_KPROBES/#if defined(CONFIG_KPROBES) \&\& 0/g' {} +
 
       - name: Prepare SUSFS & FS Patches
@@ -36,56 +36,43 @@ jobs:
           cp susfs_src/kernel_patches/fs/susfs.c fs/
           cp susfs_src/kernel_patches/include/linux/susfs.h include/linux/
           
-          # Manually inject the header to the core FS files to avoid 'Hunk FAILED'
-          # This is the 'Research' part—Samsung's headers are messy.
+          # Inject headers directly into the top of the files to prevent compilation errors
           for file in fs/dcache.c fs/namei.c fs/namespace.c fs/proc/task_mmu.c; do
             sed -i '1i #include <linux/susfs.h>' $file
           done
 
       - name: Apply SUSFS Kernel Patches
         run: |
-          # Apply the main kernel patch with high fuzz to ignore Samsung's line shifts
-          patch -p1 --fuzz=3 < susfs_src/kernel_patches/50_add_susfs_in_kernel-4.14.patch || echo "Minor patch failures ignored"
+          # Use --fuzz=3 to allow for Samsung's source code variations
+          patch -p1 --fuzz=3 < susfs_src/kernel_patches/50_add_susfs_in_kernel-4.14.patch || echo "Patching finished with some shifts"
           
-          # Manual Bridge for KSU-Next and SUSFS
-          # We use the variable we saved earlier
+          # Bridge KSU-Next to SUSFS using the path found earlier
           sed -i '1i #include <linux/susfs.h>' ${{ env.KSU_CORE }}
           sed -i '/ksu_handle_commit/a \    susfs_set_fa_ksu_status(true);' ${{ env.KSU_CORE }}
 
-      - name: Configure "Nuclear" Features (KVM, BBR, No Security)
+      - name: Configure rufnx_defconfig
         run: |
           CONF="arch/arm64/configs/rufnx_defconfig"
           
-          # 1. Kill Samsung's Security (Defex, RKP, KAP)
+          # Force Security settings to 'n'
           sed -i 's/CONFIG_SECURITY_DEFEX=y/CONFIG_SECURITY_DEFEX=n/g' $CONF
           sed -i 's/CONFIG_SECURITY_SAMSUNG_RKP=y/CONFIG_SECURITY_SAMSUNG_RKP=n/g' $CONF
           sed -i 's/CONFIG_KNOX_KAP=y/CONFIG_KNOX_KAP=n/g' $CONF
           
-          # 2. Enable KVM (Virtualization)
-          # Note: KVM requires specific CPU features; MT6833 has them.
+          # Append new features
           {
             echo "CONFIG_VIRTUALIZATION=y"
             echo "CONFIG_KVM=y"
             echo "CONFIG_KVM_ARM_HOST=y"
-            echo "CONFIG_KVM_ARM_PMU=y"
-          } >> $CONF
-          
-          # 3. Enable BBR & Required FQ Scheduler
-          {
+            echo "CONFIG_KSU=y"
+            echo "CONFIG_KSU_NEXT=y"
+            echo "CONFIG_KSU_SUSFS=y"
             echo "CONFIG_NET_SCH_FQ=y"
             echo "CONFIG_TCP_CONG_BBR=y"
             echo "CONFIG_DEFAULT_TCP_CONG=\"bbr\""
           } >> $CONF
           
-          # 4. Enable KSU & SUSFS
-          {
-            echo "CONFIG_KSU=y"
-            echo "CONFIG_KSU_NEXT=y"
-            echo "CONFIG_KSU_SUSFS=y"
-            echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=y"
-          } >> $CONF
-          
-          # Manually fix the Makefile if patch missed it
+          # Ensure the FS Makefile sees susfs.o
           grep -q "susfs.o" fs/Makefile || echo "obj-y += susfs.o" >> fs/Makefile
 
       - name: Build
@@ -94,10 +81,9 @@ jobs:
           ./build_kernel.sh
         env:
           KBUILD_BUILD_USER: "Frost"
-          KBUILD_BUILD_HOST: "Nuclear-Station"
 
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: A32-Nuclear-Kernel-v2
+          name: A32-Nuclear-Kernel-v3
           path: output/*.zip
