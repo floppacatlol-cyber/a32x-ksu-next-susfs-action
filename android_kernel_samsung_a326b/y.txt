@@ -1,0 +1,192 @@
+patching file kernel/Kconfig
+Hunk #1 succeeded at 59 with fuzz 2 (offset 43 lines).
+patching file kernel/Makefile
+Hunk #1 FAILED at 29.
+Hunk #2 FAILED at 56.
+2 out of 2 hunks FAILED -- saving rejects to file kernel/Makefile.rej
+can't find file to patch at input line 257
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/allowlist.c b/kernel/allowlist.c
+|index 4fbba935..31fd5b2d 100644
+|--- a/kernel/allowlist.c
+|+++ b/kernel/allowlist.c
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+5 out of 5 hunks ignored
+can't find file to patch at input line 306
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/apk_sign.c b/kernel/apk_sign.c
+|index ba8b73f2..9af28285 100644
+|--- a/kernel/apk_sign.c
+|+++ b/kernel/apk_sign.c
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 324
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/apk_sign.h b/kernel/apk_sign.h
+|index bed501c4..e02aa514 100644
+|--- a/kernel/apk_sign.h
+|+++ b/kernel/apk_sign.h
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 336
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/core_hook.c b/kernel/core_hook.c
+|index 9a8e774c..11dd3c39 100644
+|--- a/kernel/core_hook.c
+|+++ b/kernel/core_hook.c
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+16 out of 16 hunks ignored
+can't find file to patch at input line 935
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/kernel_compat.c b/kernel/kernel_compat.c
+|index b242bc63..0ec3df62 100644
+|--- a/kernel/kernel_compat.c
+|+++ b/kernel/kernel_compat.c
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 956
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/kernel_compat.h b/kernel/kernel_compat.h
+|index ba998185..34050e73 100644
+|--- a/kernel/kernel_compat.h
+|+++ b/kernel/kernel_compat.h
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 968
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/ksu.c b/kernel/ksu.c
+|index 3639edc2..b6dc8681 100644
+|--- a/kernel/ksu.c
+|+++ b/kernel/ksu.c
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+5 out of 5 hunks ignored
+can't find file to patch at input line 1023
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/ksud.c b/kernel/ksud.c
+|index 68e47352..f0e07b58 100644
+|--- a/kernel/ksud.c
+|+++ b/kernel/ksud.c
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+5 out of 5 hunks ignored
+can't find file to patch at input line 1082
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/ksud.h b/kernel/ksud.h
+|index cc2df243..26974c9c 100644
+|--- a/kernel/ksud.h
+|+++ b/kernel/ksud.h
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+can't find file to patch at input line 1095
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/manager.h b/kernel/manager.h
+|index be5bbced..93fa2678 100644
+|--- a/kernel/manager.h
+|+++ b/kernel/manager.h
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored
+patching file kernel/selinux/rules.c
+Hunk #1 FAILED at 36.
+Hunk #2 FAILED at 134.
+Hunk #3 FAILED at 195.
+3 out of 3 hunks FAILED -- saving rejects to file kernel/selinux/rules.c.rej
+patching file kernel/selinux/selinux.c
+Hunk #1 FAILED at 8.
+Hunk #2 FAILED at 37.
+Hunk #3 succeeded at 88 with fuzz 1 (offset 36 lines).
+Hunk #4 FAILED at 63.
+Hunk #5 FAILED at 99.
+Hunk #6 FAILED at 113.
+Hunk #7 FAILED at 131.
+6 out of 7 hunks FAILED -- saving rejects to file kernel/selinux/selinux.c.rej
+patching file kernel/selinux/selinux.h
+Hunk #1 FAILED at 8.
+1 out of 1 hunk FAILED -- saving rejects to file kernel/selinux/selinux.h.rej
+can't find file to patch at input line 1343
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/sucompat.c b/kernel/sucompat.c
+|index 9b45cd0d..4fd06f44 100644
+|--- a/kernel/sucompat.c
+|+++ b/kernel/sucompat.c
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+4 out of 4 hunks ignored
+can't find file to patch at input line 1379
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/throne_tracker.c b/kernel/throne_tracker.c
+|index 725c9103..e7ae295e 100644
+|--- a/kernel/throne_tracker.c
+|+++ b/kernel/throne_tracker.c
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+2 out of 2 hunks ignored
+can't find file to patch at input line 1401
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|diff --git a/kernel/throne_tracker.h b/kernel/throne_tracker.h
+|index 5d7f4770..428c737d 100644
+|--- a/kernel/throne_tracker.h
+|+++ b/kernel/throne_tracker.h
+--------------------------
+File to patch: 
+Skip this patch? [y] 
+Skipping patch.
+1 out of 1 hunk ignored

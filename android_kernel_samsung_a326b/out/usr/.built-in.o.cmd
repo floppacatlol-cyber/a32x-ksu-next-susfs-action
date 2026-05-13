@@ -1,0 +1,1 @@
+cmd_usr/built-in.o :=   rm -f usr/built-in.o; /home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/gcc/bin/aarch64-linux-androidkernel-ar rcSTPD usr/built-in.o usr/initramfs_data.o ; scripts/mod/modpost usr/built-in.o

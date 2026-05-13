@@ -1,0 +1,643 @@
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Device: [1;33ma32x[0m
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Config: [1;33mrufnx_defconfig[0m
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Builder: [1;33mH3CKER@H3CKED[0m
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Build started at 13-05-2026 09:13:55
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Setting up build dependencies...
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Verifying dependencies...
+[0;36m[09:13:55][0m [0;32m[OK][0m  All system dependencies verified
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Checking toolchains...
+[0;36m[09:13:55][0m [0;32m[OK][0m  GCC toolchain found
+[0;36m[09:13:55][0m [0;32m[OK][0m  Clang toolchain found
+[0;36m[09:13:55][0m [0;32m[OK][0m  AnyKernel3 already exists
+[0;36m[09:13:55][0m [0;32m[OK][0m  All dependencies ready!
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Setting up build environment...
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Architecture: [1;33marm64[0m
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Compiler: [1;33mClang + GCC[0m
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Threads: [1;33m4[0m
+[0;36m[09:13:55][0m [0;32m[OK][0m  Environment ready!
+[0;36m[09:13:55][0m [1;37m[INFO][0m  Starting kernel compilation...
+[0;36m[09:13:55][0m [0;35m[PROGRESS][0m  Generating defconfig...
+make: Entering directory '/home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b'
+make[1]: Entering directory '/home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/out'
+  GEN     ./Makefile
+#
+# configuration written to .config
+#
+make[1]: Leaving directory '/home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/out'
+make: Leaving directory '/home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b'
+[0;36m[09:13:55][0m [0;32m[OK][0m  Defconfig generated
+[0;36m[09:13:55][0m [0;35m[PROGRESS][0m  Compiling kernel with 4 threads...
+make: Entering directory '/home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b'
+make[1]: Entering directory '/home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/out'
+  GEN     ./Makefile
+scripts/kconfig/conf  --silentoldconfig Kconfig
+  CHK     include/config/kernel.release
+  GEN     ./Makefile
+  CHK     include/generated/uapi/linux/version.h
+../firmware/Makefile:95: target 'firmware/tsp_novatek/nt36525_a02_csot.bin.gen.S' given more than once in the same rule
+  Using .. as source for kernel
+  CHK     include/generated/utsrelease.h
+  CHK     scripts/mod/devicetable-offsets.h
+  CHK     include/generated/timeconst.h
+  CHK     include/generated/bounds.h
+  CHK     include/generated/asm-offsets.h
+  CALL    ../scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+kperfmon_DUMMY="CONFIG_KPERFMON is off."
+kperfmon_DUMMY="olog.pb.h file is missing... retrying"
+cp: cannot stat '../../../frameworks/base/proto/src/olog.proto': No such file or directory
+kperfmon_DUMMY=""
+cp: cannot stat '../../../vendor/samsung/system/libperflog/aprotoc': No such file or directory
+kperfmon_DUMMY=""
+cp: cannot stat '../../../system/logging/libperflog/aprotoc': No such file or directory
+kperfmon_DUMMY=""
+cp: cannot stat '../../frameworks/base/proto/src/olog.proto': No such file or directory
+kperfmon_DUMMY=""
+cp: cannot stat '../../vendor/samsung/system/libperflog/aprotoc': No such file or directory
+kperfmon_DUMMY=""
+cp: cannot stat '../../system/logging/libperflog/aprotoc': No such file or directory
+kperfmon_DUMMY=""
+chmod: cannot access '../drivers/kperfmon/aprotoc': No such file or directory
+kperfmon_DUMMY=""
+make[3]: ../drivers/kperfmon/aprotoc: No such file or directory
+kperfmon_DUMMY=""
+cp: cannot stat '../drivers/kperfmon/olog.pb.h': No such file or directory
+kperfmon_DUMMY=""
+kperfmon_DUMMY="olog.pb.h file is missing... again"
+cp: cannot stat '../../../system/core/liblog/include/log/perflog.h': No such file or directory
+kperfmon_DUMMY=""
+cp: cannot stat '../../../system/logging/liblog/include/log/perflog.h': No such file or directory
+kperfmon_DUMMY=""
+cp: cannot stat '../../system/core/liblog/include/log/perflog.h': No such file or directory
+kperfmon_DUMMY=""
+cp: cannot stat '../../system/logging/liblog/include/log/perflog.h': No such file or directory
+kperfmon_DUMMY=""
+kperfmon_DUMMY="perflog.h file is missing."
+-- KernelSU-Next Git repo detected at: /home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/KernelSU-Next
+-- KernelSU-Next version: 33132
+-- KernelSU-Next tag: v3.2.0-legacy
+-- KernelSU-Next Manager signature size: 0x3e6
+-- KernelSU-Next Manager signature hash: 79e590113c4c4c0c222978e413a5faa801666957b1212a328e46c00c69821bf7
+-- KernelSU-Next: Hook mode: Kprobes
+  CC      arch/arm64/kernel/alternative.o
+  CC      arch/arm64/kernel/cacheinfo.o
+  CC      kernel/exit.o
+  CC      arch/arm64/kernel/smp.o
+  CC      kernel/softirq.o
+  CC      arch/arm64/kernel/smp_spin_table.o
+  CC      mm/oom_kill.o
+  CC      arch/arm64/kernel/topology.o
+*MTK_GPU_VERSION 2 = valhall
+*MTK_GPU_VERSION 3 = r32p1
+  CC      kernel/resource.o
+..
+..
+FDVT: Drv use 5.1 folder
+..
+..
+..
+..
+..
+../drivers/misc/mediatek/ccu/src/Makefile:29: CCU_MAKE_FILE_CALLED
+  AS      arch/arm64/kernel/smccc-call.o
+  CC      arch/arm64/kernel/sys32.o
+$CONFIG_MTK_COMBO_CHIP is ["CONSYS_6853"]
+MTK_PLATFORM_ID is [6853]
+WIFI_IP_SET is 3
+FM_CHIP_ID is [6853]
+CFG_FM_CHIP_ID is [6853]
+CFG_FM_CHIP is []
+CFG_BUILD_CONNAC2 is [false]
+../drivers/misc/mediatek/connectivity/bt/Makefile:30: yumin: bt 1
+../drivers/misc/mediatek/connectivity/bt/Makefile:35: yumin: bt 2
+os option: linux
+$MTK_PLATFORM is [mt6853]
+$WLAN_CHIP_ID is [6853]
+../drivers/misc/mediatek/connectivity/wlan_drv_gen4m/Makefile:436: wlan_6853_axi build-in boot.img
+../drivers/misc/mediatek/connectivity/wmt_chrdev_wifi/Makefile:53: wmt_chrdev_wifi build-in boot.img
+../drivers/misc/mediatek/connectivity/wmt_drv/Makefile:46: yumin: common 1
+../drivers/misc/mediatek/connectivity/wmt_drv/Makefile:48: yumin: common 2
+../drivers/misc/mediatek/connectivity/wmt_drv/Makefile:113: wmt_drv build-in boot.img
+  AS      arch/arm64/kernel/kuser32.o
+  CC      arch/arm64/kernel/signal32.o
+  CC      kernel/sysctl.o
+  CC      mm/maccess.o
+************  drivers/trusty/mtee-kree mk ************
+MTK_GPU_VERSION 1 = mali
+*MTK_GPU_VERSION 2 = valhall
+*MTK_GPU_VERSION 3 = r32p1
+mali MTK evironment, building r32p1 DDK
+mtk-Kbuild CONFIG_MALI_PLATFORM_THIRDPARTY := y
+mtk-Kbuild CONFIG_MALI_PLATFORM_THIRDPARTY_NAME := "mt6853"
+*GPU defined GPU BM QoS 2.0
+mali MTK evironment, building r32p1 DDK
+mtk-Kbuild CONFIG_MALI_PLATFORM_THIRDPARTY := y
+mtk-Kbuild CONFIG_MALI_PLATFORM_THIRDPARTY_NAME := "mt6853"
+*GPU defined GPU BM QoS 2.0
+mali MTK evironment, building r32p1 DDK
+mtk-Kbuild CONFIG_MALI_PLATFORM_THIRDPARTY := y
+mtk-Kbuild CONFIG_MALI_PLATFORM_THIRDPARTY_NAME := "mt6853"
+*GPU defined GPU BM QoS 2.0
+imgsensor drv by common ../common/v1_1/s5kgm2_mipi_raw/ ../common/v1_1/s5k3l6_mipi_raw/ ../common/v1_1/sr846d_mipi_raw/ ../common/v1_1/gc5035_mipi_raw/ ../common/v1_1/gc02m1b_mipi_mono/
+imgsensor drv by platform 
+imgsensor subdir-ccflags-y = -I../drivers/misc/mediatek/imgsensor/src/common/v1_1 -I../drivers/misc/mediatek/imgsensor/src/inc -I../drivers/misc/mediatek/imgsensor/src/common/sysfs -I../drivers/misc/mediatek/imgsensor/src/common/adaptive_mipi -I../drivers/misc/mediatek/mmdvfs -I../drivers/i2c/busses/ -I../drivers/misc/mediatek/imgsensor/src/mt6853/camera_project/aat_v32x/camera_hw -DSENSOR_PARALLEISM -I../drivers/misc/mediatek/imgsensor/src/mt6853/seninf/
+camera project of sysfs: aat_v32x
+use gc02m1_mipi_raw device driver
+  CC      mm/page_alloc.o
+  CC      arch/arm64/kernel/sys_compat.o
+  AS      arch/arm64/kernel/entry32.o
+  CC      arch/arm64/kernel/arm64ksyms.o
+  CC      kernel/sysctl_binary.o
+  CC      arch/arm64/kernel/module.o
+  CC      kernel/capability.o
+  CC      arch/arm64/kernel/module-plts.o
+TCORE_UT_TESTS_SUPPORT = n
+TCORE_PROFILING_SUPPORT = n
+TCORE_PROFILING_AUTO_DUMP = n
+TCORE_MEMORY_LEAK_DETECTION_SUPPORT = n
+  CC      arch/arm64/kernel/perf_regs.o
+  CC      arch/arm64/kernel/perf_callchain.o
+  CC      kernel/ptrace.o
+  CC      mm/page-writeback.o
+  CC      arch/arm64/kernel/perf_event.o
+  CC      arch/arm64/kernel/hw_breakpoint.o
+  CC      kernel/user.o
+  AS      arch/arm64/kernel/sleep.o
+  CC      arch/arm64/kernel/suspend.o
+  CC      kernel/signal.o
+  CC      arch/arm64/kernel/cpuidle.o
+  CC      mm/readahead.o
+  CC      arch/arm64/kernel/armv8_deprecated.o
+  CC      fs/read_write.o
+  CC      arch/arm64/kernel/kaslr.o
+  CC      mm/swap.o
+  CC      arch/arm64/kernel/ssbd.o
+  CC      arch/arm64/kernel/probes/kprobes.o
+  CC      fs/file_table.o
+  CC      arch/arm64/kernel/probes/decode-insn.o
+  CC      kernel/sys.o
+  CC      mm/truncate.o
+  AS      arch/arm64/kernel/probes/kprobes_trampoline.o
+  CC      arch/arm64/kernel/probes/simulate-insn.o
+  CC      arch/arm64/kernel/probes/uprobes.o
+  CC      fs/super.o
+  AR      arch/arm64/kernel/probes/built-in.o
+  OBJCOPY arch/arm64/kernel/vdso/vdso.so
+  AS      arch/arm64/kernel/vdso/vdso.o
+  AR      arch/arm64/kernel/vdso/built-in.o
+  AS      arch/arm64/kernel/head.o
+  LDS     arch/arm64/kernel/vmlinux.lds
+  AR      arch/arm64/kernel/built-in.o
+  CC      mm/vmscan.o
+  AR      ipc/built-in.o
+  CC      mm/shmem.o
+  CC      fs/char_dev.o
+  CC      kernel/umh.o
+  CC      fs/stat.o
+  CC      kernel/workqueue.o
+  CC      mm/util.o
+  CC      fs/exec.o
+  CC      security/keys/gc.o
+  CC      mm/mmzone.o
+  CC      mm/vmstat.o
+  CC      security/keys/key.o
+  CC      kernel/pid.o
+  CC      security/keys/keyring.o
+  CC      fs/pipe.o
+  CC      mm/backing-dev.o
+  CC      security/keys/keyctl.o
+  CC      kernel/task_work.o
+  CC      fs/namei.o
+  CC      kernel/extable.o
+  CC      mm/mm_init.o
+  CC      security/keys/permission.o
+  CC      kernel/params.o
+  CC      mm/mmu_context.o
+  CC      security/keys/process_keys.o
+  CC      kernel/kthread.o
+  CC      mm/percpu.o
+  CC      security/keys/request_key.o
+  CC      security/keys/request_key_auth.o
+  CC      kernel/sys_ni.o
+  CC      kernel/nsproxy.o
+  CC      fs/fcntl.o
+  CC      security/keys/user_defined.o
+  CC      mm/slab_common.o
+  CC      kernel/notifier.o
+  CC      security/keys/compat.o
+  CC      security/keys/proc.o
+  CC      fs/ioctl.o
+  CC      kernel/ksysfs.o
+  CC      security/keys/sysctl.o
+  CC      kernel/cred.o
+  AR      security/keys/built-in.o
+  CC      security/samsung/dsms/dsms_access_control.o
+  CC      mm/compaction.o
+  CC      security/samsung/dsms/dsms_init.o
+  CC      fs/readdir.o
+  CC      security/samsung/dsms/dsms_kernel_api.o
+  CC      security/samsung/dsms/dsms_policy.o
+  CC      security/samsung/dsms/dsms_rate_limit.o
+  CC      security/samsung/dsms/dsms_netlink.o
+  CC      kernel/reboot.o
+  CC      security/samsung/dsms/dsms_preboot_buffer.o
+  CC      fs/select.o
+  AR      security/samsung/dsms/built-in.o
+  AR      security/samsung/five/built-in.o
+  AR      security/samsung/proca/built-in.o
+  CC      security/samsung/proca/gaf/gaf_v6.o
+  CC      kernel/async.o
+  CC      mm/vmacache.o
+  AR      security/samsung/proca/gaf/built-in.o
+  CC      security/sdp/dek.o
+  CC      mm/swap_slots.o
+  CC      kernel/range.o
+  CC      kernel/smpboot.o
+  CC      mm/interval_tree.o
+  CC      kernel/ucount.o
+  CC      fs/dcache.o
+  CC      security/sdp/dek_aes.o
+  CC      mm/list_lru.o
+  CC      kernel/kmod.o
+  CC      security/sdp/pub_crypto_emul.o
+  CC      mm/workingset.o
+  CC      kernel/groups.o
+  CC      security/sdp/dek_sysfs.o
+  CC      mm/showmem_extra.o
+  CC      security/sdp/cache_cleanup.o
+  CC      mm/debug.o
+  CC      fs/inode.o
+  CC      security/sdp/kek_pack.o
+  CC      kernel/bpf/core.o
+  CC      security/sdp/fs_handler.o
+  CC      mm/gup.o
+  AR      security/sdp/built-in.o
+  GEN     security/selinux/flask.h security/selinux/av_permissions.h
+  CC      security/selinux/avc.o
+  CC      fs/attr.o
+  CC      mm/highmem.o
+  CC      kernel/bpf/syscall.o
+  CC      security/selinux/hooks.o
+  CC      mm/memory.o
+  CC      fs/bad_inode.o
+  CC      fs/file.o
+  CC      kernel/bpf/verifier.o
+  CC      fs/filesystems.o
+  CC      security/selinux/selinuxfs.o
+  CC      mm/mincore.o
+  CC      fs/namespace.o
+../fs/namespace.c:283:15: error: use of undeclared identifier 'susfs_mnt_id_ida'; did you mean 'susfs_mnt_alloc_id'?
+        ida_pre_get(&susfs_mnt_id_ida, GFP_KERNEL);
+                     ^~~~~~~~~~~~~~~~
+                     susfs_mnt_alloc_id
+../fs/namespace.c:278:12: note: 'susfs_mnt_alloc_id' declared here
+static int susfs_mnt_alloc_id(struct mount *mnt)
+           ^
+../fs/namespace.c:285:27: error: use of undeclared identifier 'susfs_mnt_id_ida'; did you mean 'susfs_mnt_alloc_id'?
+        res = ida_get_new_above(&susfs_mnt_id_ida, susfs_mnt_id_start, &mnt->mnt_id);
+                                 ^~~~~~~~~~~~~~~~
+                                 susfs_mnt_alloc_id
+../fs/namespace.c:278:12: note: 'susfs_mnt_alloc_id' declared here
+static int susfs_mnt_alloc_id(struct mount *mnt)
+           ^
+../fs/namespace.c:285:45: error: use of undeclared identifier 'susfs_mnt_id_start'; did you mean 'mnt_id_start'?
+        res = ida_get_new_above(&susfs_mnt_id_ida, susfs_mnt_id_start, &mnt->mnt_id);
+                                                   ^~~~~~~~~~~~~~~~~~
+                                                   mnt_id_start
+../fs/namespace.c:103:12: note: 'mnt_id_start' declared here
+static int mnt_id_start = 0;
+           ^
+../fs/namespace.c:287:3: error: use of undeclared identifier 'susfs_mnt_id_start'; did you mean 'mnt_id_start'?
+                susfs_mnt_id_start = mnt->mnt_id + 1;
+                ^~~~~~~~~~~~~~~~~~
+                mnt_id_start
+../fs/namespace.c:103:12: note: 'mnt_id_start' declared here
+static int mnt_id_start = 0;
+           ^
+../fs/namespace.c:347:15: error: use of undeclared identifier 'susfs_mnt_id_ida'; did you mean 'susfs_mnt_alloc_id'?
+                ida_remove(&susfs_mnt_id_ida, id);
+                            ^~~~~~~~~~~~~~~~
+                            susfs_mnt_alloc_id
+../fs/namespace.c:278:12: note: 'susfs_mnt_alloc_id' declared here
+static int susfs_mnt_alloc_id(struct mount *mnt)
+           ^
+../fs/namespace.c:348:7: error: use of undeclared identifier 'susfs_mnt_id_start'; did you mean 'mnt_id_start'?
+                if (susfs_mnt_id_start > id)
+                    ^~~~~~~~~~~~~~~~~~
+                    mnt_id_start
+../fs/namespace.c:103:12: note: 'mnt_id_start' declared here
+static int mnt_id_start = 0;
+           ^
+../fs/namespace.c:349:4: error: use of undeclared identifier 'susfs_mnt_id_start'; did you mean 'mnt_id_start'?
+                        susfs_mnt_id_start = id;
+                        ^~~~~~~~~~~~~~~~~~
+                        mnt_id_start
+../fs/namespace.c:103:12: note: 'mnt_id_start' declared here
+static int mnt_id_start = 0;
+           ^
+../fs/namespace.c:384:21: error: use of undeclared identifier 'susfs_mnt_group_ida'
+                if (!ida_pre_get(&susfs_mnt_group_ida, GFP_KERNEL))
+                                  ^
+../fs/namespace.c:387:28: error: use of undeclared identifier 'susfs_mnt_group_ida'
+                res = ida_get_new_above(&susfs_mnt_group_ida,
+                                         ^
+../fs/namespace.c:388:6: error: use of undeclared identifier 'susfs_mnt_group_start'
+                                        susfs_mnt_group_start,
+                                        ^
+../fs/namespace.c:391:4: error: use of undeclared identifier 'susfs_mnt_group_start'; did you mean 'mnt_group_start'?
+                        susfs_mnt_group_start = mnt->mnt_group_id + 1;
+                        ^~~~~~~~~~~~~~~~~~~~~
+                        mnt_group_start
+../fs/namespace.c:104:12: note: 'mnt_group_start' declared here
+static int mnt_group_start = 1;
+           ^
+../fs/namespace.c:417:15: error: use of undeclared identifier 'susfs_mnt_group_ida'
+                ida_remove(&susfs_mnt_group_ida, id);
+                            ^
+../fs/namespace.c:418:7: error: use of undeclared identifier 'susfs_mnt_group_start'; did you mean 'mnt_group_start'?
+                if (susfs_mnt_group_start > id)
+                    ^~~~~~~~~~~~~~~~~~~~~
+                    mnt_group_start
+../fs/namespace.c:104:12: note: 'mnt_group_start' declared here
+static int mnt_group_start = 1;
+           ^
+../fs/namespace.c:419:4: error: use of undeclared identifier 'susfs_mnt_group_start'; did you mean 'mnt_group_start'?
+                        susfs_mnt_group_start = id;
+                        ^~~~~~~~~~~~~~~~~~~~~
+                        mnt_group_start
+../fs/namespace.c:104:12: note: 'mnt_group_start' declared here
+static int mnt_group_start = 1;
+           ^
+../fs/namespace.c:1551:  CC      mm/mlock.o
+16: error: use of undeclared identifier 'CL_COPY_MNT_NS'
+                if (!(flag & CL_COPY_MNT_NS)) {
+                             ^
+../fs/namespace.c:1573:14: error: use of undeclared identifier 'CL_COPY_MNT_NS'
+        if ((flag & CL_COPY_MNT_NS) && (old->mnt_id >= DEFAULT_SUS_MNT_ID)) {
+                    ^
+../fs/namespace.c:1678:51: error: use of undeclared identifier 'CL_ZYGOTE_COPY_MNT_NS'
+        if (likely(is_current_zygote_domain) && !(flag & CL_ZYGOTE_COPY_MNT_NS)) {
+                                                         ^
+../fs/namespace.c:3025:7: error: use of undeclared identifier 'susfs_is_auto_add_sus_bind_mount_enabled'
+                if (susfs_is_auto_add_sus_bind_mount_enabled &&
+                    ^
+../fs/namespace.c:3031:7: error: use of undeclared identifier 'susfs_is_auto_add_try_umount_for_bind_mount_enabled'
+                if (susfs_is_auto_add_try_umount_for_bind_mount_enabled) {
+                    ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[2]: *** [../scripts/Makefile.build:356: fs/namespace.o] Error 1
+make[1]: *** [/home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/Makefile:1165: fs] Error 2
+make[1]: *** Waiting for unfinished jobs....
+  CC      kernel/cgroup/cgroup.o
+  CC      security/selinux/netlink.o
+  CC      security/selinux/nlmsgtab.o
+  CC      mm/mmap.o
+  CC      kernel/bpf/inode.o
+  CC      security/selinux/netif.o
+  CC      security/selinux/netnode.o
+  CC      kernel/bpf/helpers.o
+  CC      security/selinux/netport.o
+  CC      mm/mprotect.o
+  CC      kernel/bpf/tnum.o
+  CC      kernel/bpf/hashtab.o
+  CC      security/selinux/ibpkey.o
+  CC      kernel/cgroup/namespace.o
+  CC      mm/mremap.o
+  CC      kernel/cgroup/cgroup-v1.o
+  CC      kernel/bpf/arraymap.o
+  CC      security/selinux/exports.o
+  CC      mm/msync.o
+  CC      security/selinux/ss/ebitmap.o
+  CC      mm/page_vma_mapped.o
+  CC      kernel/bpf/percpu_freelist.o
+  CC      kernel/bpf/bpf_lru_list.o
+  CC      kernel/cgroup/freezer.o
+  CC      security/selinux/ss/hashtab.o
+  CC      mm/pagewalk.o
+  CC      kernel/bpf/lpm_trie.o
+  CC      security/selinux/ss/symtab.o
+  CC      security/selinux/ss/sidtab.o
+  CC      kernel/cgroup/cpuset.o
+  CC      mm/pgtable-generic.o
+  CC      mm/rmap.o
+  CC      kernel/bpf/map_in_map.o
+  CC      security/selinux/ss/avtab.o
+  CC      kernel/bpf/devmap.o
+  CC      security/selinux/ss/policydb.o
+  CC      kernel/bpf/stackmap.o
+  AR      kernel/cgroup/built-in.o
+  CC      kernel/events/core.o
+  CC      mm/vmalloc.o
+  CC      kernel/bpf/cgroup.o
+  CC      security/selinux/ss/services.o
+  CC      mm/process_vm_access.o
+  AR      kernel/bpf/built-in.o
+  CC      kernel/irq/irqdesc.o
+  CC      mm/mm_debug.o
+  CC      mm/init-mm.o
+  CC      kernel/irq/handle.o
+  CC      security/selinux/ss/conditional.o
+  CC      mm/sec_mm/sec_mm_init.o
+  CC      mm/sec_mm/lowfile_detect.o
+  CC      kernel/irq/manage.o
+  CC      mm/sec_mm/panic_handler.o
+  CC      security/selinux/ss/mls.o
+  CC      mm/sec_mm/show_mem.o
+  CC      security/selinux/ss/status.o
+  CC      kernel/events/ring_buffer.o
+  AR      mm/sec_mm/sec_mm.o
+  AR      mm/sec_mm/built-in.o
+  CC      mm/nobootmem.o
+  CC      kernel/irq/spurious.o
+  AR      security/selinux/selinux.o
+  AR      security/selinux/built-in.o
+  CC      security/commoncap.o
+  CC      kernel/irq/resend.o
+  CC      mm/fadvise.o
+  CC      kernel/events/callchain.o
+  CC      kernel/irq/chip.o
+  CC      mm/madvise.o
+  CC      security/min_addr.o
+  CC      kernel/events/hw_breakpoint.o
+  CC      security/security.o
+  CC      kernel/irq/dummychip.o
+  CC      mm/memblock.o
+  CC      kernel/events/uprobes.o
+  CC      kernel/irq/devres.o
+  CC      mm/page_io.o
+  CC      kernel/irq/autoprobe.o
+  CC      security/lsm_audit.o
+  CC      mm/swap_state.o
+  AR      kernel/events/built-in.o
+  CC      kernel/irq/irqdomain.o
+  AR      kernel/livepatch/built-in.o
+  CC      kernel/locking/mutex.o
+  CC      mm/swapfile.o
+  AR      security/built-in.o
+  CC      kernel/irq/proc.o
+  CC      kernel/locking/semaphore.o
+  CC      kernel/irq/cpuhotplug.o
+  CC      kernel/power/qos.o
+  CC      kernel/irq/pm.o
+  CC      kernel/locking/rwsem.o
+  CC      kernel/locking/percpu-rwsem.o
+  CC      kernel/irq/affinity.o
+  CC      kernel/power/main.o
+  CC      mm/dmapool.o
+  CC      kernel/locking/spinlock.o
+  AR      kernel/irq/built-in.o
+  CC      kernel/printk/printk.o
+  CC      kernel/locking/osq_lock.o
+  CC      mm/sparse.o
+  CC      kernel/power/process.o
+  CC      kernel/locking/rtmutex.o
+  CC      kernel/power/suspend.o
+  CC      mm/sparse-vmemmap.o
+  CC      kernel/locking/rwsem-xadd.o
+  CC      kernel/printk/printk_safe.o
+  CC      mm/slub.o
+  AR      kernel/printk/built-in.o
+  AR      kernel/locking/built-in.o
+  CC      kernel/power/wakelock.o
+  CC      kernel/rcu/update.o
+  CC      kernel/power/poweroff.o
+  CC      mm/migrate.o
+  CC      kernel/power/wakeup_reason.o
+  CC      kernel/rcu/sync.o
+  CC      kernel/rcu/srcutree.o
+  AR      kernel/power/built-in.o
+  CC      kernel/sched/core.o
+  CC      kernel/rcu/tree.o
+  CC      kernel/time/time.o
+  CC      mm/page_counter.o
+  CC      mm/memcontrol.o
+  CC      kernel/time/timer.o
+  CC      kernel/rcu/rcu_segcblist.o
+  AR      kernel/rcu/built-in.o
+  CC      kernel/trace/trace_clock.o
+  CC      kernel/time/hrtimer.o
+  CC      kernel/trace/ring_buffer.o
+  CC      mm/vmpressure.o
+  CC      kernel/time/timekeeping.o
+  CC      mm/swap_cgroup.o
+  CC      kernel/trace/trace.o
+  CC      mm/cleancache.o
+  CC      kernel/time/ntp.o
+  CC      mm/rbinregion.o
+  CC      kernel/sched/loadavg.o
+  CC      kernel/time/clocksource.o
+  CC      mm/rbincache.o
+  CC      kernel/time/jiffies.o
+  CC      kernel/sched/clock.o
+  CC      mm/page_isolation.o
+  CC      kernel/sched/cputime.o
+  CC      kernel/time/timer_list.o
+  CC      mm/zsmalloc.o
+  CC      kernel/time/timeconv.o
+  CC      kernel/sched/idle_task.o
+  CC      kernel/time/timecounter.o
+  CC      kernel/time/alarmtimer.o
+  CC      kernel/sched/fair.o
+  CC      kernel/trace/trace_output.o
+  CC      mm/early_ioremap.o
+  CC      kernel/time/posix-timers.o
+  CC      mm/cma.o
+  CC      kernel/trace/trace_seq.o
+  CC      mm/frame_vector.o
+  CC      kernel/time/posix-cpu-timers.o
+  CC      kernel/trace/trace_stat.o
+  CC      mm/usercopy.o
+  CC      kernel/time/posix-clock.o
+  CC      kernel/trace/trace_printk.o
+  CC      mm/io_record.o
+  CC      kernel/time/itimer.o
+  CC      kernel/trace/trace_sched_switch.o
+  AR      mm/built-in.o
+  CC      kernel/time/clockevents.o
+  CC      kernel/sched/rt.o
+  CC      kernel/trace/trace_nop.o
+  CC      kernel/time/tick-common.o
+  CC      kernel/trace/blktrace.o
+  CC      kernel/sched/deadline.o
+  CC      kernel/trace/trace_events.o
+  CC      kernel/time/tick-broadcast.o
+  CC      kernel/sched/wait.o
+  CC      kernel/time/tick-broadcast-hrtimer.o
+  CC      kernel/time/sched_clock.o
+  CC      kernel/freezer.o
+  CC      kernel/time/tick-oneshot.o
+  CC      kernel/trace/trace_export.o
+  CC      kernel/time/tick-sched.o
+  CC      kernel/sched/wait_bit.o
+  CC      kernel/trace/trace_event_perf.o
+  CC      kernel/profile.o
+  CC      kernel/sched/swait.o
+  CC      kernel/time/timer_list_aee.o
+  CC      kernel/sched/completion.o
+  CC      kernel/trace/trace_events_filter.o
+  AR      kernel/time/built-in.o
+  CC      kernel/stacktrace.o
+  CC      kernel/sched/idle.o
+  CC      kernel/trace/trace_events_trigger.o
+  CC      kernel/futex.o
+  CC      kernel/sched/cpupri.o
+  CC      kernel/sched/cpudeadline.o
+  CC      kernel/trace/bpf_trace.o
+  CC      kernel/smp.o
+  CC      kernel/sched/topology.o
+  CC      kernel/uid16.o
+  CC      kernel/trace/trace_kprobe.o
+  CC      kernel/sched/stop_task.o
+  CC      kernel/module.o
+  CC      kernel/trace/power-traces.o
+  CC      kernel/sched/energy.o
+  CC      kernel/trace/rpm-traces.o
+  CC      kernel/sched/stats.o
+  CC      kernel/sched/debug.o
+  CC      kernel/sched/tune.o
+  CC      kernel/trace/trace_probe.o
+  CC      kernel/trace/trace_uprobe.o
+  CC      kernel/sched/cpuacct.o
+  CC      kernel/kallsyms.o
+  CC      kernel/sched/cpufreq.o
+  CC      kernel/compat.o
+  CC      kernel/trace/mtk_trace.o
+  CC      kernel/sched/cpufreq_schedutil.o
+  CC      kernel/utsname.o
+  AR      kernel/trace/built-in.o
+  CC      kernel/sched/membarrier.o
+  CC      kernel/pid_namespace.o
+  CC      kernel/sched/psi.o
+  GZIP    kernel/config_data.gz
+  CHK     kernel/kheaders_data.tar.xz
+  GEN     kernel/kheaders_data.tar.xz
+  CC      kernel/stop_machine.o
+  CC      kernel/audit.o
+  AR      kernel/sched/built-in.o
+  CC      kernel/auditfilter.o
+  CC      kernel/auditsc.o
+  CC      kernel/audit_watch.o
+  CC      kernel/audit_fsnotify.o
+  CC      kernel/audit_tree.o
+  CC      kernel/kprobes.o
+  CC      kernel/seccomp.o
+  CC      kernel/utsname_sysctl.o
+  CC      kernel/taskstats.o
+  CC      kernel/tsacct.o
+  CC      kernel/tracepoint.o
+  CC      kernel/elfcore.o
+  CC      kernel/irq_work.o
+  CC      kernel/cpu_pm.o
+  CC      kernel/memremap.o
+  CHK     kernel/config_data.h
+  UPD     kernel/config_data.h
+  CC      kernel/configs.o
+  CC      kernel/kheaders.o
+  AR      kernel/built-in.o
+make[1]: Leaving directory '/home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/out'
+make: *** [Makefile:146: sub-make] Error 2
+make: Leaving directory '/home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b'
+[0;36m[09:15:19][0m [0;32m[OK][0m  Kernel compilation completed!
+[0;36m[09:15:19][0m [0;31m[ERROR][0m  Kernel image not found after build
+[0;36m[09:15:19][0m [1;33m[WARNING][0m  Telegram credentials not set. Skipping upload.

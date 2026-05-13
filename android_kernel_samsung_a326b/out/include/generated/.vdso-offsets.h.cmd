@@ -1,0 +1,1 @@
+cmd_include/generated/vdso-offsets.h := 	/home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/gcc/bin/aarch64-linux-androidkernel-nm arch/arm64/kernel/vdso/vdso.so.dbg | ../arch/arm64/kernel/vdso/gen_vdso_offsets.sh | LC_ALL=C sort > include/generated/vdso-offsets.h

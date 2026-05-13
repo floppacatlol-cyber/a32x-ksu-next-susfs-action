@@ -1,0 +1,1 @@
+cmd_kernel/printk/built-in.o :=   rm -f kernel/printk/built-in.o; /home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/gcc/bin/aarch64-linux-androidkernel-ar rcSTPD kernel/printk/built-in.o kernel/printk/printk.o kernel/printk/printk_safe.o ; scripts/mod/modpost kernel/printk/built-in.o

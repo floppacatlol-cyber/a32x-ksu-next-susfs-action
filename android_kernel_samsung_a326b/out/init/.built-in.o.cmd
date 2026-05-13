@@ -1,0 +1,1 @@
+cmd_init/built-in.o :=   rm -f init/built-in.o; /home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/gcc/bin/aarch64-linux-androidkernel-ar rcSTPD init/built-in.o init/main.o init/version.o init/mounts.o init/noinitramfs.o init/initramfs.o init/calibrate.o init/init_task.o ; scripts/mod/modpost init/built-in.o

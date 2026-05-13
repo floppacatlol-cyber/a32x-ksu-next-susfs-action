@@ -1,0 +1,1 @@
+cmd_mm/sec_mm/sec_mm.o :=  rm -f mm/sec_mm/sec_mm.o; /home/runner/work/a32x-ksu-next-susfs-action/a32x-ksu-next-susfs-action/android_kernel_samsung_a326b/gcc/bin/aarch64-linux-androidkernel-ar rcSTPD mm/sec_mm/sec_mm.o mm/sec_mm/sec_mm_init.o mm/sec_mm/lowfile_detect.o mm/sec_mm/panic_handler.o mm/sec_mm/show_mem.o 
